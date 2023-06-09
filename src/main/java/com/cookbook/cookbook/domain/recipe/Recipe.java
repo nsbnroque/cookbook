@@ -2,6 +2,7 @@ package com.cookbook.cookbook.domain.recipe;
 import java.util.List;
 
 import com.cookbook.cookbook.domain.ingredient.Ingredient;
+import com.cookbook.cookbook.domain.user.User;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -28,6 +29,9 @@ public class Recipe {
     private DifficultyLevel difficultyLevel;
     @OneToMany
     private List<Ingredient> ingredients;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User author;
     
     public Recipe(RecipeDTO dto){
         this.name = dto.getName();

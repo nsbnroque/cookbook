@@ -38,7 +38,9 @@ public class UserService {
     
     @Transactional
     public void delete(Long id){
-        this.find(id)
+        this.find(id);
         repository.deleteById(id);
     }
+
+
 }
