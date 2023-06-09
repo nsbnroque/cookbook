@@ -25,6 +25,7 @@ public class RecipeDTO {
     private Integer servings;
     private DifficultyLevel difficultyLevel;
     private List<Ingredient> ingredients;
+    private List<String> directions;
 
     public RecipeDTO(Recipe recipe){
         this.name = recipe.getName();
@@ -35,6 +36,7 @@ public class RecipeDTO {
         this.servings = recipe.getServings();
         this.difficultyLevel = recipe.getDifficultyLevel();
         this.ingredients = recipe.getIngredients();
+        this.directions = recipe.getDirections();
     }
 
 }

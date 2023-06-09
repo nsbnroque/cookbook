@@ -27,6 +27,7 @@ public class Recipe {
     private Integer totalTime;
     private Integer servings;
     private DifficultyLevel difficultyLevel;
+    private List<String> directions;
     @OneToMany
     private List<Ingredient> ingredients;
     @ManyToOne
@@ -42,6 +43,7 @@ public class Recipe {
         this.servings = dto.getServings();
         this.difficultyLevel = dto.getDifficultyLevel();
         this.ingredients = dto.getIngredients();
+        this.directions = dto.getDirections();
 
     }
 
@@ -66,6 +68,9 @@ public class Recipe {
         }
         if(dto.getIngredients() != null){
             this.ingredients = dto.getIngredients();
+        }
+        if(!dto.getDirections().isEmpty()){
+            this.directions = dto.getDirections();
         }
     }
 }
