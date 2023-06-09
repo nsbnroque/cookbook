@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import com.cookbook.cookbook.domain.recipe.Recipe;
 import com.cookbook.cookbook.domain.recipe.RecipeDTO;
 import com.cookbook.cookbook.domain.user.User;
 import com.cookbook.cookbook.service.UserService;
@@ -48,6 +47,12 @@ public class UserController {
                                                   .map(RecipeDTO:: new)
                                                   .collect(Collectors.toList());
     return ResponseEntity.ok().body(recipeDTOList);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteUser(@PathVariable Long id){
+        userService.delete(id);
+        return ResponseEntity.noContent().build();
     }
 
 }
