@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.cookbook.cookbook.domain.recipe.Recipe;
 import com.cookbook.cookbook.domain.user.User;
 import com.cookbook.cookbook.repository.UserRepository;
 
@@ -40,6 +41,10 @@ public class UserService {
     public void delete(Long id){
         this.find(id);
         repository.deleteById(id);
+    }
+
+    public List<Recipe> getCookbook(Long id){
+        return repository.getAllRecipesForUser(id);
     }
 
 
