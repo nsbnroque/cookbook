@@ -26,6 +26,7 @@ public class RecipeDTO {
     private DifficultyLevel difficultyLevel;
     private List<Ingredient> ingredients;
     private List<String> directions;
+    private String authorName;
 
     public RecipeDTO(Recipe recipe){
         this.name = recipe.getName();
@@ -37,6 +38,7 @@ public class RecipeDTO {
         this.difficultyLevel = recipe.getDifficultyLevel();
         this.ingredients = recipe.getIngredients();
         this.directions = recipe.getDirections();
+        this.authorName = recipe.getAuthor().getName();
     }
 
 }

@@ -2,6 +2,7 @@ package com.cookbook.cookbook.controller;
 
 import java.net.URI;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import com.cookbook.cookbook.domain.recipe.Recipe;
+import com.cookbook.cookbook.domain.recipe.RecipeDTO;
 import com.cookbook.cookbook.domain.user.User;
 import com.cookbook.cookbook.service.UserService;
 
@@ -40,9 +42,12 @@ public class UserController {
     }
 
     @GetMapping("/{id}/recipes")
-    public ResponseEntity<List<Recipe>> getCookbook(@PathVariable Long id){
-        List<Recipe> cookbook = userService.getCookbook(id);
-        return ResponseEntity.ok(cookbook);
+    public ResponseEntity<List<RecipeDTO>> getCookbook(@PathVariable Long id){
+       List<RecipeDTO> recipeDTOList = userService.getCookbook(id)
+                                                  .stream()
+                                                  .map(RecipeDTO:: new)
+                                                  .collect(Collectors.toList());
+    return ResponseEntity.ok().body(recipeDTOList);
     }
 
 }

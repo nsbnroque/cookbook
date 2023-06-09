@@ -72,5 +72,6 @@ public class Recipe {
         if(!dto.getDirections().isEmpty()){
             this.directions = dto.getDirections();
         }
+        this.totalTime = this.cookTime + this.preparationTime;
     }
 }
