@@ -3,6 +3,7 @@ package com.cookbook.cookbook.domain.user;
 import java.util.List;
 
 import com.cookbook.cookbook.domain.recipe.Recipe;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -26,6 +27,7 @@ public class User {
     @Column(nullable = false)
     private String password;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "author")
     private List<Recipe> cookBook; 
 }
